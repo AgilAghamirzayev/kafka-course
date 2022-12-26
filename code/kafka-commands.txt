@@ -1,0 +1,17 @@
+cd opt/bitnami/kafka/bin
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+create topic --> kafka-topics.sh --create  --bootstrap-server kafka:9092 --replication-factor 1 --partitions 3 --topic test
+delete topic --> kafka-topics.sh --bootstrap-server kafka:9092 --delete --topic test
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+topic lists -->  kafka-topics.sh --bootstrap-server kafka:9092 --list
+describe topic -->  kafka-topics.sh --bootstrap-server kafka:9092 --describe
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+start producer ti send messages   --> kafka-console-producer.sh --broker-list kafka:9092 --topic test-1
+start consumer to read messages --> kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test-1 --from-beginning
+					       --> kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test-1 --from-beginning --partition 1
+					       --> kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test-1 --from-beginning --partition 1 --max-messages 10
+					       --> kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test-1  --partition 1 --offset earliest
+					       --> kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test-1  --partition 1 --offset latest
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+consumer-groups list     --> kafka-consumer-groups.sh --bootstrap-server kafka:9092 --list
+				 --> kafka-consumer-groups.sh --bootstrap-server kafka:9092 --describe --group console-consumer-36022
